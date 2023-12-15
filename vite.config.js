@@ -4,5 +4,8 @@ export default {
     root: './src',
     plugins: [
         posthtml()
-    ]
+    ],
+    build: {
+        outDir: '../dist'
+    }
 }
