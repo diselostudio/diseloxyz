@@ -1,0 +1,22 @@
+:root {
+  --dark: #1b1b28;
+  --dark7: #9ca3af;
+  --light: #fdfdfd;
+  --primary: #d5cfff;
+  --primary-shade-6: #3c3666;
+  --secondary: #ff5b37;
+  --accent: #3ff09c;
+  --accent-25: rgba(63, 240, 155, 0.25);
+}
+
+@font-face {
+  font-family: "neuehaasgrotesk-display";
+  src: url("./fonts/neuehaasgrotesk-display.woff2") format("woff2"),
+    url("./fonts/neuehaasgrotesk-display.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "neuehaasgrotesk-text";
+  src: url("./fonts/neuehaasgrotesk-text.woff2") format("woff2"),
+    url("./fonts/neuehaasgrotesk-text.ttf") format("truetype");
+}
