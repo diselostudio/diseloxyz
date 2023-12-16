@@ -1,0 +1,33 @@
+<svg class="icon-badge" viewBox="0 0 24 24"fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="12" fill="var(--accent-25)" class="icon-badge__opacity"/>
+<circle cx="12" cy="12" r="4" fill="var(--accent)" class="icon-badge__solid"/>
+</svg>
+<style>
+.icon-badge > .icon-badge__solid{
+    <!-- animation: .5s linear 0s infinite alternate pulse; -->
+}
+.icon-badge > .icon-badge__opacity{
+    animation: 0.8s ease-out 0s infinite normal grow;
+    transform-origin: center center;
+}
+@keyframes pulse {
+  from {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes grow {
+  from {
+    transform: scale(0);
+  }
+  50%{
+    opacity: 1;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+</style>

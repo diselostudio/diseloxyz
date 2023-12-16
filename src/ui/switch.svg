@@ -1,0 +1,19 @@
+<svg class="icon-switch" viewBox="0 0 28 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="27" height="15" rx="7.5" fill="var(--primary-tint-3)" stroke="var(--dark-5)"/>
+<circle cx="20" cy="8" r="5" fill="var(--dark-5)"/>
+</svg>
+
+<style>
+input[type="checkbox"]:checked + i > .icon-switch rect{
+    fill: var(--dark-2);
+    stroke: var(--secondary);
+}
+input[type="checkbox"]:checked + i > .icon-switch circle{
+    fill: var(--secondary);
+    cx: 8;
+}
+
+.icon-switch > *{
+    transition: all 0.1s linear;
+}
+</style>

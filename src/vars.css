@@ -1,12 +1,16 @@
 :root {
   --dark: #1b1b28;
-  --dark7: #9ca3af;
+  --dark-2: #111827;
+  --dark-5: #4b5563;
+  --dark-7: #9ca3af;
   --light: #fdfdfd;
   --primary: #d5cfff;
+  --primary-tint-3: #e2ddff;
+  --primary-shade-1: #bcb5e5;
   --primary-shade-6: #3c3666;
   --secondary: #ff5b37;
   --accent: #3ff09c;
-  --accent-25: rgba(63, 240, 155, 0.25);
+  --accent-25: rgba(63, 240, 155, 0.35);
 }
 
 @font-face {
