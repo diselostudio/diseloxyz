@@ -46,4 +46,18 @@ i.size-m {
 i.size-l {
 }
 
-/* focus state */
+/* Focus state */
+
+label,
+a {
+  position: relative;
+}
+
+*:focus-visible::after {
+  content: "";
+  position: absolute;
+  inset: -5px -10px;
+  border: 2px solid blue;
+  border-radius: 4px;
+  pointer-events: none;
+}
