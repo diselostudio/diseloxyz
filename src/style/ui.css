@@ -36,14 +36,16 @@
 /* Icons */
 
 i.size-s {
-  width: clamp(2.5rem, 2.4154rem + 0.2226vw, 2.8rem);
+  width: clamp(2.3rem, 2.2154rem + 0.2226vw, 2.6rem);
 }
 
 i.size-m {
-  width: clamp(3.5rem, 3.3591rem + 0.3709vw, 4rem);
+  /* width: clamp(2.5rem, 2.4154rem + 0.2226vw, 2.8rem); */
+  width: clamp(2.5rem, 2.3591rem + 0.3709vw, 3rem);
 }
 
 i.size-l {
+  width: clamp(3.5rem, 3.3591rem + 0.3709vw, 4rem);
 }
 
 /* Focus state */

@@ -69,3 +69,125 @@
   gap: 3.2rem;
   margin-bottom: 1rem;
 }
+
+/* footer */
+
+.footer {
+  background-color: var(--primary);
+  height: 1000px;
+}
+
+.footer .footer-heading {
+  margin-bottom: 6rem;
+}
+
+.footer .footer-contact-list {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 12rem;
+}
+
+.footer .footer-contact-list .footer-contact-list__bucket {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.footer .footer-contact-list .footer-contact-list__bucket * {
+  transition: color 0.1s linear, fill 0.1s linear;
+}
+
+.footer .footer-contact-list .footer-contact-list__bucket:hover * {
+  color: var(--primary-shade-2);
+  fill: var(--primary-shade-2);
+}
+
+.footer
+  .footer-contact-list
+  .footer-contact-list__bucket:hover
+  .footer-contact-list__tag {
+  color: var(--dark) !important;
+}
+
+.footer .footer-contact-list .footer-contact-list__bucket.discord {
+  cursor: pointer;
+}
+
+.footer .footer-contact-list .discord:hover .discord__tag::after {
+  opacity: 0;
+}
+
+.footer .footer-contact-list .discord__tag {
+  position: relative;
+}
+
+.footer .footer-contact-list .discord__tag::after {
+  transition: opacity 0.1s linear 0.1s;
+  position: relative;
+}
+.footer .footer-contact-list .discord__tag::after {
+  content: "";
+  position: absolute;
+  inset: 2px -0.4rem 1px;
+  background: linear-gradient(90deg, #bcb5e5 0%, #a29ccc 100%);
+  border-radius: 2rem;
+}
+
+.footer .claim {
+  user-select: none;
+  color: var(--secondary);
+  position: relative;
+}
+
+.footer .claim .claim__gradient {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 275px;
+  position: absolute;
+  background: linear-gradient(
+    90deg,
+    #d5cfff 0%,
+    #d5cfff 8.85%,
+    rgba(213, 207, 255, 0) 100%
+  );
+}
+.footer .claim .claim__gradient.reverse {
+  right: 0;
+  left: auto;
+  transform: rotate(180deg);
+}
+
+.footer .claim-marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  line-height: 1;
+}
+
+.footer .claim-marquee__text {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  animation: scroll 22s linear infinite;
+  padding-right: 6rem;
+  will-change: transform;
+}
+
+.footer .claim-marquee.revert .claim-marquee__text {
+  animation-direction: reverse;
+  animation-duration: 30s;
+  line-height: normal;
+  line-height: initial;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100%));
+  }
+}
