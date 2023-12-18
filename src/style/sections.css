@@ -2,6 +2,22 @@
 .availability-badge {
   display: flex;
   align-items: center;
+  transition: color 0.1s linear;
+}
+
+.availability-badge:hover {
+  /* color: var(--primary-shade-2); */
+}
+
+/* intro */
+.intro .intro__disolved,
+.intro .intro__subheading {
+  color: var(--dark-7);
+}
+
+.intro .intro__heading,
+.intro .intro__subheading {
+  margin-bottom: 2rem;
 }
 
 /* skillss & hobies */
@@ -44,7 +60,7 @@
 }
 
 .hobbies .hobbies__heading {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .hobbies .hobbies__bucket {
