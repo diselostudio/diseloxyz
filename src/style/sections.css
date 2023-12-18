@@ -3,3 +3,53 @@
   display: flex;
   align-items: center;
 }
+
+/* skillss & hobies */
+.skills {
+}
+
+.skills .skills-list {
+  display: flex;
+  margin-top: 4rem;
+  margin-bottom: 7.6rem;
+}
+
+.skills .skills-list .skills-list__grid {
+  color: var(--secondary);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  flex-grow: 1;
+}
+
+.skills .skills-list .skills-list__bucket {
+  display: flex;
+  gap: 1.4rem;
+  flex-direction: column;
+}
+
+.skills .skills-list .skills-list__tail {
+  display: flex;
+  align-items: end;
+}
+
+.skills .skills-list .skills-list__header {
+  color: var(--dark);
+  font-family: var(--type-display);
+}
+
+.skills .skills-connect {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hobbies .hobbies__heading {
+  margin-bottom: 2rem;
+}
+
+.hobbies .hobbies__bucket {
+  color: var(--secondary);
+  display: flex;
+  gap: 3.2rem;
+  margin-bottom: 1rem;
+}

@@ -7,7 +7,7 @@
     transition: fill 0.1s linear;
 }
 
-.icon-chevron:hover path {
+.icon-chevron__effect:hover .icon-chevron path {
     fill: var(--primary-shade-6);
 }
 </style>
