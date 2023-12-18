@@ -1,3 +1,7 @@
+main {
+  position: relative;
+}
+
 /* Typography */
 
 .heading-oversized {
@@ -36,7 +40,7 @@
 /* Icons */
 
 i.size-s {
-  width: clamp(2.3rem, 2.2154rem + 0.2226vw, 2.6rem);
+  width: clamp(2rem, 1.8872rem + 0.2967vw, 2.4rem);
 }
 
 i.size-m {

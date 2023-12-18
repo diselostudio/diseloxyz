@@ -10,6 +10,11 @@
 }
 
 /* intro */
+.intro {
+  /* todo: flexible spacing */
+  padding-bottom: 17rem;
+}
+
 .intro .intro__disolved,
 .intro .intro__subheading {
   color: var(--dark-7);
@@ -22,6 +27,8 @@
 
 /* skillss & hobies */
 .skills {
+  /* todo: flexible spacing */
+  padding-bottom: 17rem;
 }
 
 .skills .skills-list {
@@ -31,6 +38,7 @@
 }
 
 .skills .skills-list .skills-list__grid {
+  /* color: var(--secondary-shade-2); */
   color: var(--secondary);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -65,6 +73,7 @@
 
 .hobbies .hobbies__bucket {
   color: var(--secondary);
+  /* color: var(--secondary-shade-2); */
   display: flex;
   gap: 3.2rem;
   margin-bottom: 1rem;
@@ -74,7 +83,8 @@
 
 .footer {
   background-color: var(--primary);
-  height: 1000px;
+  /* todo: flexible spacing */
+  padding-top: 10rem;
 }
 
 .footer .footer-heading {
@@ -190,4 +200,37 @@
   to {
     transform: translateX(calc(-100%));
   }
+}
+
+/* location */
+
+.location {
+  position: sticky;
+  height: 100px;
+  top: 0;
+  text-align: right;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.location .location__wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  justify-content: flex-end;
+  background-color: rgba(253, 253, 253, 0.5);
+  backdrop-filter: blur(10px);
+  pointer-events: all;
+  z-index: 10;
+  padding: 0 2.5rem;
+  padding-left: 1.5rem;
+  margin: 2rem;
+  border-radius: 10rem;
+}
+
+.location .location__group {
+  display: flex;
+  color: var(--secondary);
+  gap: 1.5rem;
+  align-items: center;
 }
