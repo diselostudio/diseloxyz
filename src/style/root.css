@@ -1,8 +1,6 @@
-@import "./vars.css";
-
 :root {
-  font-family: "neuehaasgrotesk-display", "Gill Sans", "Trebuchet MS", system-ui,
-    -apple-system, sans-serif;
+  font-family: "Gill Sans", "Trebuchet MS", system-ui, -apple-system, sans-serif;
+  font-family: var(--type-display);
   color-scheme: only light;
   color: var(--dark);
   background-color: var(--light);
@@ -33,6 +31,11 @@ html {
   font-size: 62.5%;
 }
 
+a {
+  cursor: revert;
+  display: inline-block;
+}
+
 ol,
 ul,
 menu,
@@ -49,7 +52,7 @@ summary {
 }
 
 i {
-  display: inline-block;
+  display: inline-flex;
 }
 
 svg {
@@ -62,4 +65,9 @@ svg {
 
 body {
   height: 100%;
+}
+
+.content {
+  max-width: 1728px;
+  margin: 0 auto;
 }

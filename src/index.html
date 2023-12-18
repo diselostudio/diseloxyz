@@ -4,11 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="style/style.css" />
   <title>Vite App</title>
 </head>
 
 <body>
+  <div style="background-color: blue; height: 100px;" class="content">
+    <div style="background-color: red; height: 100px;"></div>
+  </div>
   <include src="sections/button.html"></include>
   <i style="width: 2rem;">
     <include src="ui/clock.svg">
@@ -45,6 +48,38 @@
     </i>
     Labelllll
   </label>
+  <div class="content">
+    <h1 class="heading">
+      welcome to diselo.xyz, I'm Elías <br>
+      a dedicated Freelance Web Developer
+    </h1>
+    <h2 class="sub-heading">
+      crafting digital products and experiences with care and attention to detail
+    </h2>
+    <h3 class="heading-3">
+      passionate about performant front-end development, <br>
+      design systems/operations and creative coding
+    </h3>
+    <h4 class="heading-4">
+      passionate about performant front-end development, <br>
+      design systems/operations and creative coding
+    </h4>
+    <p class="text">
+      passionate about performant front-end development, <br>
+      design systems/operations and creative coding
+    </p>
+    <p class="text-display">
+      passionate about performant front-end development, <br>
+      design systems/operations and creative coding
+    </p>
+    <p class="text-display-2">
+      Let's connect
+    </p>
+    <include src="sections/available-now.html"></include>
+    <!-- <i class="size-s">
+      <include src="ui/github.svg">
+    </i> -->
+  </div>
   <script type="module" src="/main.js"></script>
 </body>
 

@@ -1,0 +1,47 @@
+/* Typography */
+
+.heading-oversized {
+  font-size: clamp(10.1rem, 7.3092rem + 7.3442vw, 20rem);
+}
+
+.heading {
+  font-size: clamp(3.6rem, 2.9234rem + 1.7804vw, 6rem);
+}
+
+.sub-heading {
+  font-size: clamp(1.8rem, 1.5181rem + 0.7418vw, 2.8rem);
+}
+
+.heading-3 {
+  font-size: clamp(2.4rem, 2.0617rem + 0.8902vw, 3.6rem);
+}
+
+.heading-4 {
+  font-size: clamp(2.4rem, 2.1745rem + 0.5935vw, 3.2rem);
+}
+
+.text {
+  font-size: clamp(1.4rem, 1.3436rem + 0.1484vw, 1.6rem);
+  font-family: var(--type-regular);
+}
+
+.text-display {
+  font-size: clamp(1.5rem, 1.4436rem + 0.1484vw, 1.7rem);
+}
+
+.text-display-2 {
+  font-size: clamp(1.6rem, 1.4872rem + 0.2967vw, 2rem);
+}
+
+/* Icons */
+
+i.size-s {
+  width: clamp(2.5rem, 2.4154rem + 0.2226vw, 2.8rem);
+}
+
+i.size-m {
+  width: clamp(3.5rem, 3.3591rem + 0.3709vw, 4rem);
+}
+
+i.size-l {
+}
