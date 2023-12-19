@@ -216,7 +216,7 @@
 .location .location__wrapper {
   display: inline-flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
   justify-content: flex-end;
   background-color: rgba(253, 253, 253, 0.5);
   backdrop-filter: blur(10px);
@@ -228,9 +228,19 @@
   border-radius: 10rem;
 }
 
+.location .location__wrapper * {
+  font-size: clamp(1.2rem, 1.1436rem + 0.1484vw, 1.4rem) !important;
+}
+
 .location .location__group {
   display: flex;
   color: var(--secondary);
-  gap: 1.5rem;
+  gap: 2rem;
   align-items: center;
+}
+
+.location .location__tag {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
 }

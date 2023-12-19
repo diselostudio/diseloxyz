@@ -29,15 +29,22 @@ main {
   font-family: var(--type-regular);
 }
 
+.text-display-s {
+  font-size: clamp(1.4rem, 1.3436rem + 0.1484vw, 1.6rem);
+}
+
 .text-display {
   font-size: clamp(1.5rem, 1.4436rem + 0.1484vw, 1.7rem);
 }
 
-.text-display-2 {
-  font-size: clamp(1.6rem, 1.4872rem + 0.2967vw, 2rem);
+.text-display-s {
+  font-size: clamp(1.2rem, 1.1436rem + 0.1484vw, 1.4rem);
 }
 
 /* Icons */
+i.size-xs {
+  width: clamp(1.4rem, 1.3436rem + 0.1484vw, 1.6rem);
+}
 
 i.size-s {
   width: clamp(2rem, 1.8872rem + 0.2967vw, 2.4rem);
