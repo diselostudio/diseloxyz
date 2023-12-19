@@ -12,7 +12,6 @@ input[type="checkbox"]:checked + i > .icon-switch circle{
     fill: var(--secondary);
     cx: 8;
 }
-
 .icon-switch > *{
     transition: all 0.1s linear;
 }

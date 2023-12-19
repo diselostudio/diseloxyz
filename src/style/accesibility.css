@@ -1,0 +1,65 @@
+/* High contrast */
+@media (prefers-contrast: more) {
+  * {
+    background-color: black !important;
+    color: lightgray !important;
+    opacity: 1 !important;
+  }
+  *:hover {
+    color: lightgray !important;
+    opacity: 1 !important;
+  }
+  i * {
+    fill: lightgray !important;
+  }
+  .footer
+    .footer-contact-list
+    .footer-contact-list__bucket:hover
+    .footer-contact-list__tag {
+    color: lightgray !important;
+  }
+  .icon-switch rect {
+    stroke: aquamarine !important;
+    fill: black !important;
+  }
+  .icon-switch circle {
+    fill: aquamarine !important;
+  }
+  .footer .claim .claim__gradient {
+    display: none;
+  }
+
+  ::-moz-selection {
+    background-color: aquamarine !important;
+    color: black !important;
+  }
+
+  ::selection {
+    background-color: aquamarine !important;
+    color: black !important;
+  }
+
+  .icon-badge > .icon-badge__opacity {
+    fill: transparent !important;
+    stroke: aquamarine !important;
+  }
+
+  .icon-badge > .icon-badge__solid {
+    fill: orange !important;
+  }
+}
+
+/* Reduced motion */
+/* window.matchMedia("(prefers-color-scheme: dark)"); */
+
+@media (prefers-reduced-motion) {
+  * {
+    animation-play-state: paused !important;
+    transition-duration: 0s !important;
+  }
+}
+
+body.prefers-reduced-motion {
+  animation-play-state: paused !important;
+  transition-duration: 0s !important;
+}

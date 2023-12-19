@@ -36,6 +36,10 @@ a {
   display: inline-block;
 }
 
+label {
+  cursor: pointer;
+}
+
 ol,
 ul,
 menu,

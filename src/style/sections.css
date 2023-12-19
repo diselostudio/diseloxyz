@@ -6,7 +6,7 @@
 }
 
 .availability-badge:hover {
-  /* color: var(--primary-shade-2); */
+  color: var(--dark-7);
 }
 
 /* intro */
@@ -65,6 +65,11 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  transition: color 0.1s linear;
+}
+
+.skills .skills-connect:hover {
+  color: var(--dark-7);
 }
 
 .hobbies .hobbies__heading {
@@ -243,4 +248,25 @@
   display: flex;
   align-items: center;
   gap: 0.8rem;
+}
+
+/* accesibility */
+
+.accesibility {
+  position: sticky;
+  top: 100%;
+  transform: translateY(-200%);
+  display: flex;
+  gap: 2.5rem;
+}
+
+.accesibility .accesibility__option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--dark5);
+}
+
+.accesibility .accesibility__option input {
+  display: none;
 }
