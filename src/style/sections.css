@@ -142,6 +142,7 @@
   transition: opacity 0.1s linear 0.1s;
   position: relative;
 }
+
 .footer .footer-contact-list .discord__tag::after {
   content: "";
   position: absolute;
