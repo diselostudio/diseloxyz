@@ -42,9 +42,15 @@
 @media screen and (max-width: 768px) {
   .main-padding {
     --pad: clamp(3rem, -2.9686rem + 15.7068vw, 9rem);
-    padding-left: var(--pad);
-    padding-right: var(--pad);
-    padding-top: var(--pad);
+    padding: var(--pad) var(--pad) 0 var(--pad);
+  }
+
+  .intro {
+    margin-bottom: 8em;
+  }
+
+  .skills {
+    margin-bottom: 8em;
   }
 
   .skills .skills-list .skills-list__grid {
@@ -67,23 +73,39 @@
     padding-top: 0;
   }
 
+  .footer .footer-heading {
+    margin-bottom: 0;
+  }
+
   .footer .claim .claim__gradient {
     display: none;
   }
 
   .footer .footer-contact-list {
-    margin-bottom: 8rem;
+    margin-bottom: 5rem;
     overflow: auto;
+    padding-bottom: 1rem;
+    /* width: 100%; */
+    /* flex-grow: 2; */
   }
 
   .footer .footer-contact-list .footer-contact-list__bucket {
     text-wrap: nowrap;
+    /* display: inline-block; */
+    /* max-width: 100%; */
+    /* min-width: 100%; */
   }
 
   .location {
     position: fixed;
     bottom: 0;
     top: auto;
+    position: fixed;
+    bottom: 0;
+    top: revert;
+    height: auto;
+    padding: 0;
+    max-height: none;
   }
 
   .location .location__wrapper {
@@ -96,5 +118,44 @@
 
   .location .location__wrapper .availability-badge {
     display: none;
+  }
+}
+
+/* Typography */
+
+@media screen and (max-width: 768px) {
+  .heading-oversized {
+    font-size: clamp(10.1rem, 7.3092rem + 7.3442vw, 20rem);
+  }
+
+  .heading {
+    font-size: clamp(3.8rem, -3.1667rem + 18.3333vw, 6rem);
+    line-height: 1.2;
+  }
+
+  /* .sub-heading {
+    font-size: clamp(1.8rem, 1.5181rem + 0.7418vw, 2.8rem);
+  } */
+
+  .heading-3,
+  .heading-4 {
+    font-size: clamp(2.4rem, 0.5rem + 5vw, 3rem);
+  }
+
+  .text-display-s,
+  .text,
+  .text-display,
+  .text-display-2,
+  .sub-heading {
+    font-size: clamp(1.5rem, -1.2143rem + 7.1429vw, 2rem);
+  }
+
+  .location .location__wrapper * {
+    font-size: clamp(1.5rem, -1.2143rem + 7.1429vw, 2rem) !important;
+  }
+
+  /* Icons */
+  i.size-xs {
+    width: clamp(1.7rem, 0.0714rem + 4.2857vw, 2rem);
   }
 }
