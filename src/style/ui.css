@@ -2,6 +2,18 @@ main {
   position: relative;
 }
 
+.content {
+  max-width: 1728px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.main-padding {
+  --pad: clamp(1.5rem, -6.8613rem + 10.8871vw, 9.6rem);
+  padding-left: var(--pad);
+  padding-right: var(--pad);
+}
+
 /* Typography */
 
 .heading-oversized {

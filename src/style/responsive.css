@@ -1,0 +1,100 @@
+@media screen and (min-width: 1124px) {
+  .dnone-min-md {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1124px) {
+  .skills .skills-list {
+    flex-direction: column-reverse;
+    margin-top: 3rem;
+  }
+
+  .skills .skills-list .skills-list__tail {
+    margin-bottom: 6rem;
+  }
+
+  .footer .footer-content {
+    overflow: hidden;
+  }
+
+  .footer .footer-contact-list {
+    gap: 1rem;
+  }
+
+  .footer .footer-contact-list .footer-contact-list__bucket {
+    background-color: var(--primary-tint-1);
+    border: 1px solid var(--primary-shade-1);
+    border-radius: 3px;
+    padding: 1.5rem 2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .dnone-min-sm {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main-padding {
+    --pad: clamp(3rem, -2.9686rem + 15.7068vw, 9rem);
+    padding-left: var(--pad);
+    padding-right: var(--pad);
+    padding-top: var(--pad);
+  }
+
+  .skills .skills-list .skills-list__grid {
+    display: block;
+  }
+
+  .skills .skills-list .skills-list__bucket {
+    margin-bottom: 4.4rem;
+  }
+
+  .hobbies .hobbies__bucket {
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer {
+    position: relative;
+    z-index: 100;
+    padding-top: 0;
+  }
+
+  .footer .claim .claim__gradient {
+    display: none;
+  }
+
+  .footer .footer-contact-list {
+    margin-bottom: 8rem;
+    overflow: auto;
+  }
+
+  .footer .footer-contact-list .footer-contact-list__bucket {
+    text-wrap: nowrap;
+  }
+
+  .location {
+    position: fixed;
+    bottom: 0;
+    top: auto;
+  }
+
+  .location .location__wrapper {
+    margin: 0;
+    border-radius: 0;
+    box-sizing: border-box;
+    padding: 2rem 3rem;
+    width: 100vw;
+  }
+
+  .location .location__wrapper .availability-badge {
+    display: none;
+  }
+}
