@@ -89,15 +89,15 @@
     margin-bottom: 5rem;
     overflow: auto;
     padding-bottom: 1rem;
-    /* width: 100%; */
-    /* flex-grow: 2; */
   }
 
   .footer .footer-contact-list .footer-contact-list__bucket {
     text-wrap: nowrap;
-    /* display: inline-block; */
-    /* max-width: 100%; */
-    /* min-width: 100%; */
+    white-space: nowrap;
+  }
+
+  .footer .footer-contact-list .footer-contact-list__bucket * {
+    white-space: nowrap;
   }
 
   .location {
@@ -219,6 +219,7 @@
   .accesibility .accesibility__option {
     font-size: clamp(1.5rem, -1.2143rem + 7.1429vw, 2rem) !important;
     color: var(--dark-2);
+    gap: 0.7rem;
   }
 
   .location .location__worldclock,
