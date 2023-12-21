@@ -35,7 +35,7 @@
 
 @media screen and (min-width: 768px) {
   .dnone-min-sm {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -106,18 +106,33 @@
     height: auto;
     padding: 0;
     max-height: none;
+    width: 100vw;
+    max-width: 100vw;
   }
 
   .location .location__wrapper {
     margin: 0;
     border-radius: 0;
     box-sizing: border-box;
-    padding: 1.6rem 3rem;
-    width: 100vw;
+    padding: 0.5rem 1.8rem;
+    margin: 1.2rem;
+    margin-top: 0;
+    border-radius: 10rem;
+    width: calc(100vw - 2.4rem);
+    justify-content: flex-end;
+    gap: 0;
+    padding-left: 1.5rem;
   }
 
-  .location .location__wrapper .availability-badge {
+  .location .location__group {
     display: none;
+  }
+
+  .location .location__availability {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
   }
 
   .footer .claim-marquee__text {

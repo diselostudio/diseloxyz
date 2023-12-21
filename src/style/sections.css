@@ -254,6 +254,11 @@
   gap: 0.8rem;
 }
 
+.location .location__accesibility,
+.location .location__worldclock {
+  padding: 0.7rem;
+}
+
 /* accesibility */
 
 .accesibility {
