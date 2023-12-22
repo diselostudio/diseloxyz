@@ -1,17 +1,16 @@
-import { setupCounter } from './counter.js'
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('DOMContentLoaded');
+})
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+// On scroll start remove hashtag
 
-setupCounter(document.querySelector('#counter'))
+// On scoll change add 100px class
+
+// Click accesibility add accesibility class
+// On load check if any accesibility option is enabled, if so, add classes and change input values
+
+// Click timezone add timezone class
+
+// On start begin timer counter and update clock interval
+
+// On document loaded and time interval began add ready class

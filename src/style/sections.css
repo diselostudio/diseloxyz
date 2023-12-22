@@ -218,6 +218,7 @@
   z-index: 10;
   height: 0;
   max-height: 0;
+  padding-bottom: 12rem;
 }
 
 .location .location__wrapper {
