@@ -1,7 +1,9 @@
 let AccesibilityButton;
 let TimezoneButton;
 let ReducedMotionToggle;
+const reducedMotionMedia = window.matchMedia("(prefers-reduced-motion)");
 let HighContrastToggle;
+const highContrastMedia = window.matchMedia("(prefers-contrast: more)");
 
 document.addEventListener('DOMContentLoaded', function () {
   AccesibilityButton = document.querySelector('.interaction__accesibility');
@@ -17,26 +19,34 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.classList.toggle('timezone-open');
   })
 
+  ReducedMotionToggle.checked = reducedMotionMedia.matches;
+
   ReducedMotionToggle.addEventListener('change', function (e) {
     document.body.classList.toggle('reduced-motion-on', e.target.checked);
   })
 
+  reducedMotionMedia.addEventListener('change', function (e) {
+    ReducedMotionToggle.checked = e.matches;
+    document.body.classList.toggle('reduced-motion-on', e.matches);
+  })
+
+  HighContrastToggle.checked = highContrastMedia.matches;
+
   HighContrastToggle.addEventListener('change', function (e) {
     document.body.classList.toggle('high-contrast-on', e.target.checked);
   })
+
+  highContrastMedia.addEventListener('change', function (e) {
+    HighContrastToggle.checked = e.matches;
+    document.body.classList.toggle('high-contrast-on', e.matches);
+  })
+
+
 })
 
 // On scroll start remove hashtag
 
 // On scoll change add 100px class
-
-// Styling on button interaction
-// Click accesibility add accesibility class
-// On load check if any accesibility option is enabled, if so, add classes and change input values
-// Accesibility toggles events
-
-// Click timezone add timezone class
-
 
 // On start begin timer counter and update clock interval
 
