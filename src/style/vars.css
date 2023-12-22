@@ -8,6 +8,7 @@
   font-family: "neuehaasgrotesk-text";
   src: url("/fonts/neuehaasgrotesk-text.woff2") format("woff2"),
     url("/fonts/neuehaasgrotesk-text.ttf") format("truetype");
+  font-weight: 100 800;
 }
 
 :root {

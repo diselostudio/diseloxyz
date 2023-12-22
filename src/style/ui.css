@@ -53,6 +53,10 @@ main {
   font-size: clamp(1.6rem, 1.4872rem + 0.2967vw, 2rem);
 }
 
+.text-display-3 {
+  font-size: clamp(1.9rem, 1.6971rem + 0.4831vw, 2.4rem);
+}
+
 /* Icons */
 i.size-xs {
   width: clamp(1.4rem, 1.3436rem + 0.1484vw, 1.6rem);
