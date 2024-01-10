@@ -15,25 +15,20 @@ export function run(el) {
                 endTrigger: '.skills',
                 pin: true,
                 pinSpacing: false,
-                // markers: import.meta.env.DEV,
+                markers: import.meta.env.DEV,
             }
         })
         .to(
             '#brand',
-            { y: 0, duration: 1 }
-        )
-        .to(
-            '#brand',
-            { scale: 0.15, duration: 1, delay: 0.2 }
-        )
-        .to(
-            '#brand',
-            { rotate: 90, duration: 0.4, delay: 0.2 }
-        )
-        .to(
-            '#brand',
-            { filter: "blur(20px)", opacity: 0, duration: 0.2, delay: 0.2, scale: 1.15, }
-        )
+            {
+                keyframes: [
+                    { y: 0, duration: 1 },
+                    { scale: 0.15, duration: 0.9, delay: 0.2 },
+                    { rotate: 90, duration: 0.4, delay: 0.2 },
+                    { filter: "blur(20px)", opacity: 0, duration: 0.3, delay: 0.3, scale: 2.15, },
+                    { duration: 0.3, }
+                ]
+            })
 
     master.add(movement)
 }

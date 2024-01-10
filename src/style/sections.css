@@ -312,8 +312,8 @@ body.ready .location .location__group {
 /* sketch */
 
 .experience {
-  min-height: calc(var(--view) * 5);
-  max-height: calc(var(--view) * 5);
+  min-height: calc(var(--view) * 4);
+  max-height: calc(var(--view) * 4);
 }
 
 #brand__wrap {
@@ -324,6 +324,7 @@ body.ready .location .location__group {
   min-height: var(--view);
   max-height: var(--view);
   display: flex;
+  pointer-events: none;
 }
 
 #brand {
@@ -334,4 +335,5 @@ body.ready .location .location__group {
   /* transform: translateY(0) scale(0.15); */
   transform: translateY(70%);
   transform-origin: center center;
+  pointer-events: none;
 }
