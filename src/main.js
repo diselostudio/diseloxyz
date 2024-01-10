@@ -1,4 +1,8 @@
-import { throttle } from "./scripts/utils";
+import { throttle, removeHashFromURL } from "./scripts/utils";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 let AccesibilityButton;
 let TimezoneButton;
@@ -16,7 +20,19 @@ function timer() {
   }
 }
 
+// TODO: Add JS computed viewport height variable to root ?
+async function initializeSketch() {
+  const sketchEl = document.getElementById('sketch');
+  const mobileSketch = await import(`./scripts/sketch.mobile.js`);
+  mobileSketch.run(sketchEl);
+  return 1;
+}
+
+// window.initializeSketch = initializeSketch;
+
 document.addEventListener('DOMContentLoaded', function () {
+
+  removeHashFromURL();
 
   // Buttons
 
@@ -62,6 +78,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // Scroll status
 
   window.addEventListener('scroll', throttle(function () {
+    document.body.classList.remove('timezone-open');
+    document.body.classList.remove('accesibility-open');
+
     if (window.scrollY > 50) {
       document.body.classList.add('scroll-50');
     } else {
@@ -69,22 +88,31 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }, 25))
 
-  // On start begin timer counter and update clock interval
   // Timers
+
   LocationTimers = document.querySelectorAll('.location__time')
   timer();
-  setInterval(timer, 900);
+  setInterval(timer, 1000);
+
+  // Initialize sketch
+  initializeSketch().then(console.log);
+
+  // Ready, execute after time tickers
+  document.body.classList.add('ready')
 
 })
 
-// If accesibility is open, bind event to close tooltips
-
-// On scroll start remove hashtag same on inital load
-
-// On scoll change add 100px class
-
-
-
-// On document loaded and time interval began add ready class
-
 // Sketch
+// ------
+// Dynamically load sketch based on resolution
+// Listen to resize event (create one single event)
+// On resize check if new experience should be loaded
+// GSAP scroll based timeline
+
+// Mobile experience
+// -----------------
+
+
+// Refactor
+// --------
+// Refactor and create services for listeners based on design patterns

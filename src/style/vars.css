@@ -37,3 +37,13 @@
   --type-regular: "neuehaasgrotesk-text", "Gill Sans", "Trebuchet MS", system-ui,
     -apple-system, sans-serif;
 }
+
+:root {
+  --view: 100vh;
+}
+
+@supports (height: 100dvh) {
+  :root {
+    --view: 100svh;
+  }
+}

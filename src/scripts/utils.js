@@ -22,3 +22,7 @@ export function throttle(fn, timeout = 300) {
         }
     }
 }
+
+export function removeHashFromURL() {
+    history.replaceState('', document.title, window.location.origin + window.location.pathname + window.location.search);
+}

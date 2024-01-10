@@ -248,6 +248,12 @@
   color: var(--secondary);
   gap: 2rem;
   align-items: center;
+  opacity: 0;
+  transition: opacity 0.2s linear 0.2s;
+}
+
+body.ready .location .location__group {
+  opacity: 1;
 }
 
 .location .location__tag {
@@ -301,4 +307,31 @@
 
 .accesibility .accesibility__option input {
   display: none;
+}
+
+/* sketch */
+
+.experience {
+  min-height: calc(var(--view) * 5);
+  max-height: calc(var(--view) * 5);
+}
+
+#brand__wrap {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: var(--view);
+  min-height: var(--view);
+  max-height: var(--view);
+  display: flex;
+}
+
+#brand {
+  position: absolute;
+  width: 100%;
+  bottom: -50%;
+  margin-bottom: 25%;
+  /* transform: translateY(0) scale(0.15); */
+  transform: translateY(70%);
+  transform-origin: center center;
 }
