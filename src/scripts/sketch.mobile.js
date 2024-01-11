@@ -22,10 +22,10 @@ export function run(el) {
             '#brand',
             {
                 keyframes: [
-                    { y: 0, duration: 1 },
-                    { scale: 0.15, duration: 0.9, delay: 0.2 },
-                    { rotate: 90, duration: 0.4, delay: 0.2 },
-                    { filter: "blur(20px)", opacity: 0, duration: 0.3, delay: 0.3, scale: 2.15, },
+                    { y: 0, duration: 1, scale: 1.2 },
+                    { scale: 0.15, duration: 0.2, delay: 0.0 },
+                    { rotate: 90, duration: 0.2, delay: 0.2 },
+                    { filter: "blur(20px)", opacity: 0, duration: 0.3, delay: 0.5, scale: 2.15, },
                     { duration: 0.3, }
                 ]
             })
