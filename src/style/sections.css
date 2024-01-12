@@ -255,7 +255,7 @@ body.ready .location {
   position: absolute;
   pointer-events: none;
   transition: transform 0.2s ease-out, opacity 0.2s linear;
-  right: 0;
+  right: 2rem;
   top: -100%;
 }
 

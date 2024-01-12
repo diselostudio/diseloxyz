@@ -212,7 +212,8 @@
     background: none;
     pointer-events: all;
     padding: 0;
-    gap: 1.8rem;
+    gap: 2rem;
+    right: 0;
   }
 
   .location .location__tag.location__worldclock {
@@ -223,6 +224,7 @@
     cursor: pointer;
     order: 5;
     padding: 0.5rem;
+    margin-left: -0.5rem;
   }
 
   .location .location__accesibility:hover {
