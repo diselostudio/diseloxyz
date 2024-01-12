@@ -65,7 +65,8 @@ body.high-contrast-on .icon-badge > .icon-badge__solid {
   body.high-contrast-on .accesibility {
     opacity: 0 !important;
   }
-  body.high-contrast-on .accesibility .accesibility__options {
+  body.high-contrast-on .accesibility .accesibility__options,
+  body.high-contrast-on .location .location__group {
     border: 1px solid var(--light);
   }
 
@@ -77,6 +78,22 @@ body.high-contrast-on .icon-badge > .icon-badge__solid {
   }
   body.high-contrast-on .location__mobile .location__group {
     border: 1px solid var(--light);
+  }
+}
+
+body.high-contrast-on .location .location__group,
+body.high-contrast-on .location .accesibility__group {
+  opacity: 0 !important;
+}
+
+body.high-contrast-on.timezone-open .location .location__group,
+body.high-contrast-on.accesibility-open .location .accesibility__group {
+  opacity: 1 !important;
+}
+
+@media screen and (min-width: 768px) {
+  body.high-contrast-on .location .location__group {
+    opacity: 1 !important;
   }
 }
 
