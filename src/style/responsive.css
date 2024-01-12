@@ -137,41 +137,6 @@
     align-items: center;
   }
 
-  /* .location.location__mobile {
-    top: auto;
-    bottom: 70px;
-    right: 0;
-    padding-right: 1.2rem;
-    box-sizing: border-box;
-    transform: translateY(25%);
-    opacity: 0;
-    transition: transform 0.2s ease-out, opacity 0.2s linear;
-    pointer-events: none;
-    width: auto;
-  }
-
-  .location.location__mobile .location__group {
-    background-color: var(--primary-tint-1);
-    box-sizing: border-box;
-    flex-direction: column;
-    border-radius: 1rem;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1.8rem 2rem;
-    display: flex;
-  }
-
-  body.timezone-open .location.location__mobile {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: all;
-  }
-
-  .location.location__mobile .location__tag {
-    color: var(--dark-2);
-    font-size: clamp(1.5rem, -1.2143rem + 7.1429vw, 2rem) !important;
-  } */
-
   .footer .claim-marquee__text {
     animation-duration: 16s;
     padding-right: 3rem;
@@ -180,67 +145,6 @@
   .footer .claim-marquee.revert .claim-marquee__text {
     animation-duration: 25s;
   }
-
-  /* .accesibility {
-    position: fixed;
-    padding: 0;
-    transform: none;
-    height: auto;
-    max-height: none;
-    top: auto;
-    bottom: 0;
-    box-sizing: border-box;
-    text-align: left;
-    bottom: 70px;
-    right: 0;
-    padding-right: 1.2rem;
-    padding-left: 0.2rem;
-    transform: translateY(25%);
-    opacity: 0;
-    transition: transform 0.2s ease-out, opacity 0.2s linear;
-    pointer-events: none;
-  }
-
-  .accesibility .accesibility__options {
-    transform: none;
-    background-color: var(--primary);
-    flex-direction: column;
-    height: auto;
-    border-radius: 1rem;
-    width: 100%;
-    margin: 0;
-    padding: 1.8rem 2rem;
-    box-sizing: border-box;
-    gap: 1rem;
-  }
-
-  body.accesibility-open .accesibility {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: all;
-  }
-
-  .accesibility .accesibility__option {
-    font-size: clamp(1.5rem, -1.2143rem + 7.1429vw, 2rem) !important;
-    color: var(--dark-2);
-    gap: 1rem;
-  }
-
-  .location .location__worldclock,
-  .location .location__accesibility {
-    transition: background-color 0.1s linear;
-  }
-
-  body.timezone-open .location .location__worldclock,
-  body.accesibility-open .location .location__accesibility {
-    background: var(--dark-9);
-    border-radius: 0.8rem;
-  }
-
-  body.timezone-open .location .location__worldclock *,
-  body.accesibility-open .location .location__accesibility * {
-    fill: var(--dark-7);
-  } */
 }
 
 /* Typography */
@@ -300,4 +204,44 @@
 /* Location and availability desktop style */
 
 @media screen and (min-width: 768px) {
+  .location .location__group {
+    opacity: 1;
+    position: relative;
+    transform: none;
+    flex-direction: row;
+    background: none;
+    pointer-events: all;
+    padding: 0;
+    gap: 1.8rem;
+  }
+
+  .location .location__tag.location__worldclock {
+    display: none;
+  }
+
+  .location .location__accesibility {
+    cursor: pointer;
+    order: 5;
+    padding: 0.5rem;
+  }
+
+  .location .location__accesibility:hover {
+    background: var(--dark-9);
+    border-radius: 0.8rem;
+  }
+
+  .location .location__accesibility i {
+    width: clamp(2rem, 1.8872rem + 0.2967vw, 2.4rem);
+    transform: scale(0.9);
+  }
+
+  .location .accesibility__group {
+    top: 40%;
+    margin-right: 2.5rem;
+    right: 0;
+  }
+
+  body.accesibility-open .location .accesibility__group {
+    transform: translateY(40%);
+  }
 }

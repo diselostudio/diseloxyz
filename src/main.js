@@ -51,29 +51,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Accesibility options
 
-  // ReducedMotionToggle = document.querySelector('.interaction__reduced-motion');
-  // ReducedMotionToggle.checked = reducedMotionMedia.matches;
+  ReducedMotionToggle = document.querySelector('.interaction__reduced-motion');
+  ReducedMotionToggle.checked = reducedMotionMedia.matches;
 
-  // ReducedMotionToggle.addEventListener('change', function (e) {
-  //   document.body.classList.toggle('reduced-motion-on', e.target.checked);
-  // })
+  ReducedMotionToggle.addEventListener('change', function (e) {
+    document.body.classList.toggle('reduced-motion-on', e.target.checked);
+  })
 
-  // reducedMotionMedia.addEventListener('change', function (e) {
-  //   ReducedMotionToggle.checked = e.matches;
-  //   document.body.classList.toggle('reduced-motion-on', e.matches);
-  // })
+  reducedMotionMedia.addEventListener('change', function (e) {
+    ReducedMotionToggle.checked = e.matches;
+    document.body.classList.toggle('reduced-motion-on', e.matches);
+  })
 
-  // HighContrastToggle = document.querySelector('.interaction__high-contrast');
-  // HighContrastToggle.checked = highContrastMedia.matches;
+  HighContrastToggle = document.querySelector('.interaction__high-contrast');
+  HighContrastToggle.checked = highContrastMedia.matches;
 
-  // HighContrastToggle.addEventListener('change', function (e) {
-  //   document.body.classList.toggle('high-contrast-on', e.target.checked);
-  // })
+  HighContrastToggle.addEventListener('change', function (e) {
+    document.body.classList.toggle('high-contrast-on', e.target.checked);
+  })
 
-  // highContrastMedia.addEventListener('change', function (e) {
-  //   HighContrastToggle.checked = e.matches;
-  //   document.body.classList.toggle('high-contrast-on', e.matches);
-  // })
+  highContrastMedia.addEventListener('change', function (e) {
+    HighContrastToggle.checked = e.matches;
+    document.body.classList.toggle('high-contrast-on', e.matches);
+  })
 
   // Scroll status
 
