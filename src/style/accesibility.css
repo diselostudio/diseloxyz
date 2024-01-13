@@ -6,7 +6,6 @@ body.high-contrast-on {
 body.high-contrast-on * {
   background-color: black !important;
   color: lightgray !important;
-  opacity: 1 !important;
 }
 
 body.high-contrast-on *:hover {
@@ -97,8 +96,32 @@ body.high-contrast-on.accesibility-open .location .accesibility__group {
   }
 }
 
+body.high-contrast-on .experience #brand__wrap,
+body.high-contrast-on .experience #brand__wrap #brand,
+body.high-contrast-on .experience #brand__wrap #brand svg {
+  background-color: transparent !important;
+}
+
+body.high-contrast-on .experience #brand__wrap #brand svg path {
+  fill: var(--secondary);
+}
+
 /* Reduced motion */
 body.reduced-motion-on * {
   animation-play-state: paused !important;
   transition-duration: 0s !important;
+}
+
+body.reduced-motion-on #brand__wrap {
+  position: relative;
+}
+
+body.reduced-motion-on #brand__wrap #brand {
+  opacity: 1 !important;
+  filter: none !important;
+  scale: 1 !important;
+  rotate: none !important;
+  transform: none !important;
+  bottom: auto !important;
+  margin-bottom: 0 !important;
 }
