@@ -20,11 +20,15 @@ function timer() {
   }
 }
 
-// TODO: Add JS computed viewport height variable to root ?
 async function initializeSketch() {
   const sketchEl = document.getElementById('sketch');
   const mobileSketch = await import(`./scripts/sketch.mobile.js`);
   mobileSketch.run(sketchEl);
+  return 1;
+}
+
+async function initializeAnalytics() {
+  await import(`./scripts/analytics.js`);
   return 1;
 }
 
@@ -95,10 +99,16 @@ document.addEventListener('DOMContentLoaded', function () {
   setInterval(timer, 1000);
 
   // Initialize sketch
+
   initializeSketch().then(console.log);
 
   // Ready, execute after time tickers
+
   document.body.classList.add('ready')
+
+  // Load analytics scripts
+
+  initializeAnalytics().then(console.log);
 
 })
 
@@ -109,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // On resize check if new experience should be loaded
 // GSAP scroll based timeline
 
-// Mobile experience
+// Desktop experience
 // -----------------
 
 
