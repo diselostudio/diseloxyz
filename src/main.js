@@ -23,13 +23,19 @@ function timer() {
 async function initializeSketch() {
   const sketchEl = document.getElementById('sketch');
   const mobileSketch = await import(`./scripts/sketch.mobile.js`);
-  mobileSketch.run(sketchEl);
+  const { Sketch } = await import(`./scripts/sketch.desktop.js`);
+  // mobileSketch.run(sketchEl);
+  const desktopSketch = new Sketch(sketchEl);
+  desktopSketch.run();
   return 1;
 }
 
 async function initializeAnalytics() {
-  await import(`./scripts/analytics.js`);
-  return 1;
+  try {
+    await import(`./scripts/analytics.js`);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 // window.initializeSketch = initializeSketch;

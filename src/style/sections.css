@@ -348,3 +348,10 @@ body.accesibility-open .location .location__accesibility * {
   transform-origin: center center;
   pointer-events: none;
 }
+
+/* sketch desktop */
+#sketch {
+  position: fixed;
+  inset: 0;
+  /* z-index: -1; */
+}
