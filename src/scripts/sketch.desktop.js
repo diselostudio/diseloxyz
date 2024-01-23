@@ -5,7 +5,7 @@ import { SVGLoader } from 'three/addons/loaders/SVGLoader.js';
 import Stats from 'three/addons/libs/stats.module.js';
 import * as vanilla from '@pmndrs/vanilla'
 import { GUI } from 'dat.gui'
-import { debounce } from "./utils";
+import { debounce, throttle } from "./utils";
 
 const visibleHeightAtZDepth = (depth, camera) => {
     // compensate for cameras not positioned at z=0
@@ -33,6 +33,11 @@ export class Sketch {
     width = window.innerWidth;
     height = window.innerHeight;
     stats = new Stats();
+    uniforms = {
+        uTime: { value: 0 },
+        uMouseX: { value: 0 },
+        uMouseY: { value: 0 }
+    }
 
     constructor(el) {
         this.el = el;
@@ -59,7 +64,12 @@ export class Sketch {
             const scalefactor = visibleWidthAtZDepth(0, this.camera) / this.sizex;
             this.brand.scale.set(scalefactor, -scalefactor, scalefactor);
             this.brand.position.x = (this.sizex * scalefactor) / 2;
-        }), 50)
+        }, 150))
+
+        window.addEventListener('mousemove', throttle(({ x, y }) => {
+            this.uniforms.uMouseX.value = ((x * 2) / window.innerWidth) - 1;
+            this.uniforms.uMouseY.value = ((y * 2) / window.innerHeight) - 1;
+        }, 50));
     }
 
     appendCanvasToEl() {
@@ -72,7 +82,7 @@ export class Sketch {
         this.camera.position.z = 4
         this.scene.add(this.camera)
 
-        if (import.meta.env.DEV) {
+        if (false && import.meta.env.DEV) {
             const controls = new OrbitControls(this.camera, this.canvas)
             controls.enableDamping = true
             const helper = new THREE.CameraHelper(this.camera);
@@ -82,7 +92,7 @@ export class Sketch {
         }
 
         this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: true });
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
         this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
         this.renderer.setClearColor('#fff')
     }
@@ -133,6 +143,7 @@ export class Sketch {
                 this.brand.scale.set(scalefactor, -scalefactor, scalefactor);
                 this.brand.position.x = (size.x * scalefactor) / 2;
                 this.brand.position.y = (size.y * scalefactor) - (size.y * scalefactor) - 0.25;
+                this.brand.position.z = -1.6;
 
                 this.scene.add(this.brand);
             },
@@ -144,44 +155,76 @@ export class Sketch {
             }
         );
 
-        const geometry = new THREE.BoxGeometry(3, 3, 1);
+
+        const geometryW = visibleWidthAtZDepth(0, this.camera);
+        const geometryH = visibleHeightAtZDepth(0, this.camera);;
+        const geometry = new THREE.BoxGeometry(geometryW, geometryH, 0.5, 120, 120);
         const material = new vanilla.MeshTransmissionMaterial({
             _transmission: 1,
-            thickness: 3,
-            roughness: 0,
-            chromaticAberration: 0.1,
-            anisotropicBlur: 0.1,
+            thickness: 2.5,
+            roughness: 0.08,
+            chromaticAberration: 0.15,
+            anisotropicBlur: 0.4,
             distortion: 0.1,
             distortionScale: 0.1,
-            temporalDistortion: 0,
+            temporalDistortion: 1,
         });
+
+        const oldfn = material.onBeforeCompile;
+        material.onBeforeCompile = (shader, renderer) => {
+
+            shader.uniforms.uTime = this.uniforms.uTime;
+            shader.uniforms.uMouseX = this.uniforms.uMouseX;
+            shader.uniforms.uMouseY = this.uniforms.uMouseY;
+
+            shader.vertexShader = shader.vertexShader.replace(
+                '#include <common>',
+                /*glsl*/`
+                uniform float uTime;
+                uniform float uMouseX;
+                uniform float uMouseY;
+                #include <common>;
+                `
+            )
+
+            shader.vertexShader = shader.vertexShader.replace(
+                '#include <begin_vertex>',
+                /*glsl*/`
+                #include <begin_vertex>
+                // transformed.z = sin(position.x * 10.0 - (uTime * 2.0) - (position.y * 2.5)) * 0.25;
+                // transformed.z = sin(mod(position.x * 5.0, 0.5) - (position.y * 2.5)) * 0.25;
+                // transformed.z = abs(sin(position.x * 5.0 - (uTime * .25)) - (position.y * 1.5) * 0.5);
+                // transformed.z = step(abs(position.x), sin(position.x - uTime));
+                // transformed.z += abs((position.x * (position.y * 0.6) + (uMouseX * 1.5)) ) ;
+                // transformed.z -= sin(position.x + mod(uTime * 0.5, 5.0))* 0.5;
+                // transformed.z += mod((position.x + (uMouseX)), 2.) ;
+                transformed.z += abs((position.x + (uMouseX * 3.0)) * 0.25 ) + (uMouseY * 0.75);
+                `
+            )
+
+            oldfn(shader, renderer);
+        }
+
         const cube = new THREE.Mesh(geometry, material);
-        cube.position.set(0, -1, 1);
+        cube.position.set(0, 0, 0.5);
         this.scene.add(cube);
 
-        const fboBack = vanilla.useFBO(512, 512)
-        const fboMain = vanilla.useFBO(512, 512)
+        const fboBack = vanilla.useFBO(1024, 1024)
+        const fboMain = vanilla.useFBO(1024, 1024)
         material.buffer = fboMain.texture
-
         this.transmissionMaterial = material;
         this.transmissionMesh = cube;
         this.backFBO = fboBack;
         this.mainFBO = fboMain;
 
         this.discardMaterial = new vanilla.MeshDiscardMaterial();
-
-
-        // Add plane to scene, make it thicker
-        // Add material to plane
-        // Distort material
     }
 
     animate() {
-        //const elapsedTime = this.clock.getElapsedTime()
+        const elapsedTime = this.clock.getElapsedTime();
+        this.uniforms.uTime.value = elapsedTime;
 
         // RENDER GLASS
-        const oldTone = this.renderer.toneMapping;
-        const oldBg = this.scene.background;
         const oldSide = this.transmissionMesh.material.side;
 
         this.renderer.toneMapping = THREE.NoToneMapping;
@@ -199,9 +242,8 @@ export class Sketch {
         this.transmissionMesh.material.side = oldSide;
         this.transmissionMesh.material.buffer = this.mainFBO.texture
 
+
         this.renderer.setRenderTarget(null);
-        this.renderer.toneMapping = oldTone;
-        this.scene.background = oldBg;
         // END RENDER GLASS
 
         this.renderer.render(this.scene, this.camera);

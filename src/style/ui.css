@@ -9,7 +9,7 @@ main {
 }
 
 .main-padding {
-  --pad: clamp(1.5rem, -6.8613rem + 10.8871vw, 9.6rem);
+  --pad: clamp(1.5rem, 0.3468rem + 2.4024vw, 3rem);
   padding-left: var(--pad);
   padding-right: var(--pad);
 }
@@ -22,6 +22,7 @@ main {
 
 .heading {
   font-size: clamp(3.6rem, 2.9234rem + 1.7804vw, 6rem);
+  line-height: 100%;
 }
 
 .sub-heading {

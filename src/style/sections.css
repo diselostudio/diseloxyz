@@ -12,13 +12,16 @@
 /* intro */
 .intro {
   /* todo: flexible spacing */
-  padding-top: 13vh;
+  padding-top: 1rem;
   padding-bottom: 17rem;
 }
 
-.intro .intro__disolved,
-.intro .intro__subheading {
+.intro .intro__disolved {
   color: var(--dark-7);
+}
+
+.intro .intro__subheading {
+  color: var(--dark);
 }
 
 .intro .intro__heading,
@@ -217,9 +220,6 @@
   text-align: right;
   pointer-events: none;
   z-index: 10;
-  height: 0;
-  max-height: 0;
-  padding-bottom: 12rem;
   opacity: 0;
   transition: opacity 0.2s linear;
 }
@@ -353,5 +353,10 @@ body.accesibility-open .location .location__accesibility * {
 #sketch {
   position: fixed;
   inset: 0;
-  /* z-index: -1; */
+  z-index: -1;
+}
+
+#sketch canvas {
+  width: 100% !important;
+  height: 100% !important;
 }
