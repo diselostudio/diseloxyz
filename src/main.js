@@ -1,4 +1,4 @@
-import { throttle, removeHashFromURL } from "./scripts/utils";
+import { throttle, removeHashFromURL, debounce } from "./scripts/utils";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -20,14 +20,50 @@ function timer() {
   }
 }
 
-async function initializeSketch() {
-  const sketchEl = document.getElementById('sketch');
+function initializeSketch() {
+  let isDesktop = window.innerWidth > 768, mobileExperience, desktopExperience;
+
+  if (isDesktop) {
+    initializeDesktopSketch().then((experience) => desktopExperience = experience);
+  } else {
+    initializeMobileSketch().then((experience) => mobileExperience = experience);
+  }
+
+  window.addEventListener('resize', debounce(() => {
+
+    const isNewDesktop = window.innerWidth > 768;
+
+    if (isNewDesktop !== isDesktop) {
+      isDesktop = isNewDesktop;
+
+      if (isDesktop) {
+        mobileExperience && mobileExperience.kill();
+        // desktopExperience && desktopExperience.resume();
+        !desktopExperience && initializeDesktopSketch().then((experience) => desktopExperience = experience);
+      } else {
+        console.log('load mobile');
+        mobileExperience && mobileExperience.resume();
+        // desktopExperience && desktopExperience.kill();
+        !mobileExperience && initializeMobileSketch().then((experience) => desktopExperience = experience);
+      }
+    }
+  }, 200))
+}
+
+async function initializeMobileSketch() {
+  const sketchElMobile = document.getElementById('sketch__mobile');
   const mobileSketch = await import(`./scripts/sketch.mobile.js`);
+  mobileSketch.run(sketchElMobile);
+  return mobileSketch;
+}
+
+async function initializeDesktopSketch() {
+  const sketchElDesktop = document.getElementById('sketch__desktop');
   const { Sketch } = await import(`./scripts/sketch.desktop.js`);
-  // mobileSketch.run(sketchEl);
-  const desktopSketch = new Sketch(sketchEl);
-  desktopSketch.run();
-  return 1;
+  const desktopSketch = new Sketch(sketchElDesktop);
+  // desktopSketch.run();
+  document.body.classList.add('ready__desktop-experience')
+  return desktopSketch
 }
 
 async function initializeAnalytics() {
@@ -106,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Initialize sketch
 
-  initializeSketch().then(console.log);
+  initializeSketch();
 
   // Ready, execute after time tickers
 
@@ -114,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Load analytics scripts
 
-  initializeAnalytics().then(console.log);
+  initializeAnalytics();
 
 })
 
@@ -124,11 +160,3 @@ document.addEventListener('DOMContentLoaded', function () {
 // Listen to resize event (create one single event)
 // On resize check if new experience should be loaded
 // GSAP scroll based timeline
-
-// Desktop experience
-// -----------------
-
-
-// Refactor
-// --------
-// Refactor and create services for listeners based on design patterns

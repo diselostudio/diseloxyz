@@ -1,4 +1,4 @@
-import { debounce } from './utils';
+import { debounce, throttle } from './utils';
 
 (function () {
 
@@ -55,7 +55,7 @@ import { debounce } from './utils';
 
     }, 2000))
 
-    window.addEventListener('scroll', debounce(function (e) {
+    window.addEventListener('scroll', throttle(function (e) {
         const percentage = 100 * window.scrollY / (document.body.offsetHeight - window.innerHeight);
         const clampedPercentage = Math.round(percentage / 25) * 25;
         if (clampedPercentage !== scrollPercentage) {
@@ -65,7 +65,7 @@ import { debounce } from './utils';
                 { timeout: 2000 }
             )
         }
-    }, 500))
+    }, 250))
 
 })();
 

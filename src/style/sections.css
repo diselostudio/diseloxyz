@@ -22,6 +22,7 @@
 
 .intro .intro__subheading {
   color: var(--dark);
+  margin-bottom: 3rem !important;
 }
 
 .intro .intro__heading,
@@ -320,7 +321,15 @@ body.accesibility-open .location .location__accesibility * {
   fill: var(--dark-7);
 }
 
-/* sketch */
+/* sketch mobile */
+
+#sketch__mobile {
+  display: block;
+}
+
+#sketch__desktop {
+  display: none;
+}
 
 .experience {
   min-height: calc(var(--view) * 3.5);
@@ -350,13 +359,30 @@ body.accesibility-open .location .location__accesibility * {
 }
 
 /* sketch desktop */
-#sketch {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-}
 
-#sketch canvas {
-  width: 100% !important;
-  height: 100% !important;
+@media screen and (min-width: 768px) {
+  .experience {
+    min-height: auto;
+    max-height: auto;
+  }
+
+  #brand__wrap {
+    display: none;
+  }
+
+  #sketch__mobile {
+    display: none;
+  }
+
+  #sketch__desktop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+  }
+
+  #sketch__desktop canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
 }

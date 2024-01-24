@@ -1,5 +1,8 @@
 import { gsap } from "gsap";
-import brand from './../ui/brand.svg?raw';
+
+export let kill;
+
+export let resume;
 
 export function run(el) {
 
@@ -29,6 +32,14 @@ export function run(el) {
                     { duration: 0.3, }
                 ]
             })
+
+    kill = movement.scrollTrigger.disable;
+
+    resume = () => {
+        movement.scrollTrigger.enable();
+        movement.scrollTrigger.refresh();
+    }
+
 
     master.add(movement)
 }
