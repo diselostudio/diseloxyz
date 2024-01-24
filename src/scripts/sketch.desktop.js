@@ -1,4 +1,4 @@
-// import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 // import Stats from 'three/addons/libs/stats.module.js';
 // import { GUI } from 'dat.gui'
 import { gsap } from "gsap";
@@ -93,8 +93,8 @@ export class Sketch {
         this.scene.add(this.camera)
 
         // if (false && import.meta.env.DEV) {
-        //     const controls = new OrbitControls(this.camera, this.canvas)
-        //     controls.enableDamping = true
+        const controls = new OrbitControls(this.camera, this.canvas)
+        controls.enableDamping = true
         //     const helper = new THREE.CameraHelper(this.camera);
         //     this.scene.add(helper);
         //     this.gui = new GUI();
@@ -112,7 +112,7 @@ export class Sketch {
         const SVGloader = new SVGLoader();
 
         SVGloader.load(
-            '/brand.svg',
+            './brand.svg',
             (data) => {
 
                 const paths = data.paths;
@@ -201,13 +201,6 @@ export class Sketch {
                 '#include <begin_vertex>',
                 /*glsl*/`
                 #include <begin_vertex>
-                // transformed.z = sin(position.x * 10.0 - (uTime * 2.0) - (position.y * 2.5)) * 0.25;
-                // transformed.z = sin(mod(position.x * 5.0, 0.5) - (position.y * 2.5)) * 0.25;
-                // transformed.z = abs(sin(position.x * 5.0 - (uTime * .25)) - (position.y * 1.5) * 0.5);
-                // transformed.z = step(abs(position.x), sin(position.x - uTime));
-                // transformed.z += abs((position.x * (position.y * 0.6) + (uMouseX * 1.5)) ) ;
-                // transformed.z -= sin(position.x + mod(uTime * 0.5, 5.0))* 0.5;
-                // transformed.z += mod((position.x + (uMouseX)), 2.) ;
                 transformed.z += abs((position.x + (uMouseX * 3.0)) * 0.25 ) + (uMouseY * 0.75);
                 `
             )
