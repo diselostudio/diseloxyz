@@ -38,13 +38,12 @@ function initializeSketch() {
 
       if (isDesktop) {
         mobileExperience && mobileExperience.kill();
-        // desktopExperience && desktopExperience.resume();
+        desktopExperience && desktopExperience.resume();
         !desktopExperience && initializeDesktopSketch().then((experience) => desktopExperience = experience);
       } else {
-        console.log('load mobile');
         mobileExperience && mobileExperience.resume();
-        // desktopExperience && desktopExperience.kill();
-        !mobileExperience && initializeMobileSketch().then((experience) => desktopExperience = experience);
+        desktopExperience && desktopExperience.kill();
+        !mobileExperience && initializeMobileSketch().then((experience) => mobileExperience = experience);
       }
     }
   }, 200))
@@ -61,7 +60,7 @@ async function initializeDesktopSketch() {
   const sketchElDesktop = document.getElementById('sketch__desktop');
   const { Sketch } = await import(`./scripts/sketch.desktop.js`);
   const desktopSketch = new Sketch(sketchElDesktop);
-  // desktopSketch.run();
+  desktopSketch.run();
   document.body.classList.add('ready__desktop-experience')
   return desktopSketch
 }

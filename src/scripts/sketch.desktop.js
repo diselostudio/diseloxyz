@@ -1,10 +1,10 @@
+// import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+// import Stats from 'three/addons/libs/stats.module.js';
+// import { GUI } from 'dat.gui'
 import { gsap } from "gsap";
 import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { SVGLoader } from 'three/addons/loaders/SVGLoader.js';
-import Stats from 'three/addons/libs/stats.module.js';
-import * as vanilla from '@pmndrs/vanilla'
-import { GUI } from 'dat.gui'
+import { MeshDiscardMaterial, MeshTransmissionMaterial, useFBO } from '@pmndrs/vanilla';
 import { debounce, throttle } from "./utils";
 
 const visibleHeightAtZDepth = (depth, camera) => {
@@ -27,12 +27,13 @@ const visibleWidthAtZDepth = (depth, camera) => {
 
 export class Sketch {
 
+    paused = false;
     canvas = document.createElement('canvas');
     el = null;
     clock = new THREE.Clock();
     width = window.innerWidth;
     height = window.innerHeight;
-    stats = new Stats();
+    // stats = new Stats();
     uniforms = {
         uTime: { value: 0 },
         uMouseX: { value: 0 },
@@ -57,13 +58,22 @@ export class Sketch {
             this.height = window.innerHeight;
             this.camera.aspect = this.width / this.height;
             this.camera.updateProjectionMatrix();
-            this.renderer.setSize(this.width, this.height);
+            this.renderer.setSize(this.width / 2, this.height / 2);
             this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-            // BRAND
+            // // BRAND
             const scalefactor = visibleWidthAtZDepth(0, this.camera) / this.sizex;
             this.brand.scale.set(scalefactor, -scalefactor, scalefactor);
             this.brand.position.x = (this.sizex * scalefactor) / 2;
+
+            // PBR CUBE
+            // create new geometry and assign to cube
+            this.cube.geometry.dispose();
+            const geometryW = visibleWidthAtZDepth(0, this.camera);
+            const geometryH = visibleHeightAtZDepth(0, this.camera);
+            const geometry = new THREE.BoxGeometry(geometryW, geometryH, 0.5, 120, 120);
+            this.cube.geometry = geometry;
+
         }, 150))
 
         window.addEventListener('mousemove', throttle(({ x, y }) => {
@@ -82,16 +92,16 @@ export class Sketch {
         this.camera.position.z = 4
         this.scene.add(this.camera)
 
-        if (false && import.meta.env.DEV) {
-            const controls = new OrbitControls(this.camera, this.canvas)
-            controls.enableDamping = true
-            const helper = new THREE.CameraHelper(this.camera);
-            this.scene.add(helper);
-            this.gui = new GUI();
-            document.body.appendChild(this.stats.dom);
-        }
+        // if (false && import.meta.env.DEV) {
+        //     const controls = new OrbitControls(this.camera, this.canvas)
+        //     controls.enableDamping = true
+        //     const helper = new THREE.CameraHelper(this.camera);
+        //     this.scene.add(helper);
+        //     this.gui = new GUI();
+        // document.body.appendChild(this.stats.dom);
+        // }
 
-        this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: true });
+        this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: false });
         this.renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
         this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
         this.renderer.setClearColor('#fff')
@@ -102,7 +112,7 @@ export class Sketch {
         const SVGloader = new SVGLoader();
 
         SVGloader.load(
-            'ui/brand.svg',
+            '/brand.svg',
             (data) => {
 
                 const paths = data.paths;
@@ -157,9 +167,9 @@ export class Sketch {
 
 
         const geometryW = visibleWidthAtZDepth(0, this.camera);
-        const geometryH = visibleHeightAtZDepth(0, this.camera);;
+        const geometryH = visibleHeightAtZDepth(0, this.camera);
         const geometry = new THREE.BoxGeometry(geometryW, geometryH, 0.5, 120, 120);
-        const material = new vanilla.MeshTransmissionMaterial({
+        const material = new MeshTransmissionMaterial({
             _transmission: 1,
             thickness: 2.5,
             roughness: 0.08,
@@ -205,22 +215,34 @@ export class Sketch {
             oldfn(shader, renderer);
         }
 
-        const cube = new THREE.Mesh(geometry, material);
-        cube.position.set(0, 0, 0.5);
-        this.scene.add(cube);
+        this.cube = new THREE.Mesh(geometry, material);
+        this.cube.position.set(0, 0, 0.5);
+        this.scene.add(this.cube);
 
-        const fboBack = vanilla.useFBO(1024, 1024)
-        const fboMain = vanilla.useFBO(1024, 1024)
+        const fboBack = useFBO(962, 962)
+        const fboMain = useFBO(962, 962)
         material.buffer = fboMain.texture
         this.transmissionMaterial = material;
-        this.transmissionMesh = cube;
+        this.transmissionMesh = this.cube;
         this.backFBO = fboBack;
         this.mainFBO = fboMain;
 
-        this.discardMaterial = new vanilla.MeshDiscardMaterial();
+        this.discardMaterial = new MeshDiscardMaterial();
+    }
+
+    kill() {
+        this.paused = true;
+    }
+
+    resume() {
+        this.paused = false;
+        this.animate();
     }
 
     animate() {
+
+        if (this.paused) return;
+
         const elapsedTime = this.clock.getElapsedTime();
         this.uniforms.uTime.value = elapsedTime;
 
@@ -242,12 +264,11 @@ export class Sketch {
         this.transmissionMesh.material.side = oldSide;
         this.transmissionMesh.material.buffer = this.mainFBO.texture
 
-
         this.renderer.setRenderTarget(null);
         // END RENDER GLASS
 
         this.renderer.render(this.scene, this.camera);
-        this.stats.update();
+        // this.stats.update();
         window.requestAnimationFrame(this.animate.bind(this));
     }
 }

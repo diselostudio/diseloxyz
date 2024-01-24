@@ -96,6 +96,7 @@
   background-color: var(--primary);
   /* todo: flexible spacing */
   padding-top: 10rem;
+  position: relative;
 }
 
 .footer .footer-heading {
@@ -378,11 +379,16 @@ body.accesibility-open .location .location__accesibility * {
     display: block;
     position: fixed;
     inset: 0;
-    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.2s linear;
   }
 
   #sketch__desktop canvas {
     width: 100% !important;
     height: 100% !important;
+  }
+
+  body.ready__desktop-experience #sketch__desktop {
+    opacity: 1;
   }
 }
