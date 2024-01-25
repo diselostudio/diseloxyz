@@ -61,7 +61,6 @@ async function initializeDesktopSketch() {
   const { Sketch } = await import(`./scripts/sketch.desktop.js`);
   const desktopSketch = new Sketch(sketchElDesktop);
   desktopSketch.run();
-  document.body.classList.add('ready__desktop-experience')
   return desktopSketch
 }
 

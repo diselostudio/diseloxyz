@@ -117,16 +117,15 @@ export class Sketch {
 
                 const paths = data.paths;
                 const group = new THREE.Group();
+                const material = new THREE.MeshBasicMaterial({
+                    color: '#111827',
+                    side: THREE.FrontSide,
+                    depthWrite: false
+                });
 
                 for (let i = 0; i < paths.length; i++) {
 
                     const path = paths[i];
-
-                    const material = new THREE.MeshBasicMaterial({
-                        color: '#111827',
-                        side: THREE.FrontSide,
-                        depthWrite: false
-                    });
 
                     const shapes = SVGLoader.createShapes(path);
 
@@ -156,6 +155,7 @@ export class Sketch {
                 this.brand.position.z = -1.6;
 
                 this.scene.add(this.brand);
+                this.createTimeline();
             },
             function (xhr) {
                 // console.log((xhr.loaded / xhr.total * 100) + '% loaded');
@@ -221,6 +221,30 @@ export class Sketch {
         this.mainFBO = fboMain;
 
         this.discardMaterial = new MeshDiscardMaterial();
+    }
+
+    createTimeline() {
+        console.log(this.transmissionMaterial);
+        window.t = this.transmissionMaterial;
+
+        this.timeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".experience",
+                pin: true,
+                start: "top 30%", // start scroller-start
+                end: "+=1900",
+                scrub: 0.75,
+                markers: import.meta.env.DEV,
+            }
+        }).to(this.brand.position, {
+            keyframes: {
+                "15%": { z: -10, y: 1 },
+                "55%": { z: -10, y: 1 },
+                "100%": { z: 3, y: 5 },
+            }
+        })
+
+        document.body.classList.add('ready__desktop-experience')
     }
 
     kill() {

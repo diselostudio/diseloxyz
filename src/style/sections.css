@@ -12,7 +12,7 @@
 /* intro */
 .intro {
   /* todo: flexible spacing */
-  padding-top: 1rem;
+  padding-top: clamp(1.5rem, 0.3468rem + 2.4024vw, 3rem);
   padding-bottom: 17rem;
 }
 
@@ -386,6 +386,24 @@ body.accesibility-open .location .location__accesibility * {
   #sketch__desktop canvas {
     width: 100% !important;
     height: 100% !important;
+  }
+
+  body {
+    overflow: hidden;
+  }
+
+  .skills,
+  .footer {
+    opacity: 0;
+  }
+
+  body.ready__desktop-experience .skills,
+  body.ready__desktop-experience .footer {
+    opacity: 1;
+  }
+
+  body.ready__desktop-experience {
+    overflow: auto;
   }
 
   body.ready__desktop-experience #sketch__desktop {
