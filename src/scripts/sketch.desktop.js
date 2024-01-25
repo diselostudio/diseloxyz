@@ -1,6 +1,3 @@
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-// import Stats from 'three/addons/libs/stats.module.js';
-// import { GUI } from 'dat.gui'
 import { gsap } from "gsap";
 import * as THREE from 'three';
 import { SVGLoader } from 'three/addons/loaders/SVGLoader.js';
@@ -33,7 +30,6 @@ export class Sketch {
     clock = new THREE.Clock();
     width = window.innerWidth;
     height = window.innerHeight;
-    // stats = new Stats();
     uniforms = {
         uTime: { value: 0 },
         uMouseX: { value: 0 },
@@ -67,7 +63,6 @@ export class Sketch {
             this.brand.position.x = (this.sizex * scalefactor) / 2;
 
             // PBR CUBE
-            // create new geometry and assign to cube
             this.cube.geometry.dispose();
             const geometryW = visibleWidthAtZDepth(0, this.camera);
             const geometryH = visibleHeightAtZDepth(0, this.camera);
@@ -91,15 +86,6 @@ export class Sketch {
         this.camera = new THREE.PerspectiveCamera(45, this.width / this.height)
         this.camera.position.z = 4
         this.scene.add(this.camera)
-
-        // if (false && import.meta.env.DEV) {
-        const controls = new OrbitControls(this.camera, this.canvas)
-        controls.enableDamping = true
-        //     const helper = new THREE.CameraHelper(this.camera);
-        //     this.scene.add(helper);
-        //     this.gui = new GUI();
-        // document.body.appendChild(this.stats.dom);
-        // }
 
         this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: false });
         this.renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
@@ -268,15 +254,14 @@ export class Sketch {
 
     kill() {
         this.paused = true;
+        this.timeline.scrollTrigger.disable();
     }
 
     resume() {
         this.paused = false;
+        this.timeline.scrollTrigger.enable();
+        this.timeline.scrollTrigger.refresh();
         this.animate();
-    }
-
-    activateReducedMotion() {
-
     }
 
     animate() {
@@ -308,7 +293,6 @@ export class Sketch {
         // END RENDER GLASS
 
         this.renderer.render(this.scene, this.camera);
-        // this.stats.update();
         window.requestAnimationFrame(this.animate.bind(this));
     }
 }

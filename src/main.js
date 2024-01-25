@@ -11,6 +11,7 @@ const reducedMotionMedia = window.matchMedia("(prefers-reduced-motion)");
 let HighContrastToggle;
 const highContrastMedia = window.matchMedia("(prefers-contrast: more)");
 let LocationTimers;
+let mobileExperience, desktopExperience;
 
 function timer() {
   const date = new Date();
@@ -21,7 +22,7 @@ function timer() {
 }
 
 function initializeSketch() {
-  let isDesktop = window.innerWidth > 768, mobileExperience, desktopExperience;
+  let isDesktop = window.innerWidth > 768;
 
   if (isDesktop) {
     initializeDesktopSketch().then((experience) => desktopExperience = experience);
@@ -61,7 +62,7 @@ async function initializeDesktopSketch() {
   const { Sketch } = await import(`./scripts/sketch.desktop.js`);
   const desktopSketch = new Sketch(sketchElDesktop);
   desktopSketch.run();
-  return desktopSketch
+  return desktopSketch;
 }
 
 async function initializeAnalytics() {
@@ -69,6 +70,14 @@ async function initializeAnalytics() {
     await import(`./scripts/analytics.js`);
   } catch (error) {
     console.error(error);
+  }
+}
+
+function toggleDesktopMotion() {
+  if (ReducedMotionToggle.checked || HighContrastToggle.checked) {
+    desktopExperience && desktopExperience.kill();
+  } else {
+    desktopExperience && desktopExperience.resume();
   }
 }
 
@@ -100,11 +109,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   ReducedMotionToggle.addEventListener('change', function (e) {
     document.body.classList.toggle('reduced-motion-on', e.target.checked);
+    toggleDesktopMotion();
   })
 
   reducedMotionMedia.addEventListener('change', function (e) {
     ReducedMotionToggle.checked = e.matches;
     document.body.classList.toggle('reduced-motion-on', e.matches);
+    toggleDesktopMotion();
   })
 
   HighContrastToggle = document.querySelector('.interaction__high-contrast');
@@ -112,11 +123,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   HighContrastToggle.addEventListener('change', function (e) {
     document.body.classList.toggle('high-contrast-on', e.target.checked);
+    toggleDesktopMotion();
   })
 
   highContrastMedia.addEventListener('change', function (e) {
     HighContrastToggle.checked = e.matches;
     document.body.classList.toggle('high-contrast-on', e.matches);
+    toggleDesktopMotion();
   })
 
   // Scroll status
