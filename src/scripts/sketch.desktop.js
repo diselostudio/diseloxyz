@@ -224,8 +224,6 @@ export class Sketch {
     }
 
     createTimeline() {
-        console.log(this.transmissionMaterial);
-        window.t = this.transmissionMaterial;
 
         this.timeline = gsap.timeline({
             scrollTrigger: {
@@ -242,7 +240,28 @@ export class Sketch {
                 "55%": { z: -10, y: 1 },
                 "100%": { z: 3, y: 5 },
             }
-        })
+        }).to(this.transmissionMaterial.uniforms.roughness, {
+            keyframes: {
+                "15%": { value: 0 },
+            }
+        }, '<').to(this.transmissionMaterial.uniforms.distortionScale, {
+            keyframes: {
+                "55%": { value: 0.1 },
+                "100%": { value: 0.5 },
+            }
+        }, '<').to(this.transmissionMaterial.uniforms.thickness, {
+            keyframes: {
+                "55%": { value: 1 },
+                "100%": { value: 4 },
+            }
+        }, '<').to(this.transmissionMaterial.uniforms.anisotropicBlur, {
+            keyframes: {
+                "15%": { value: 0 },
+                "55%": { value: 0 },
+                "60%": { value: 0.5 },
+                "100%": { value: 0.5 },
+            }
+        }, '<')
 
         document.body.classList.add('ready__desktop-experience')
     }
@@ -254,6 +273,10 @@ export class Sketch {
     resume() {
         this.paused = false;
         this.animate();
+    }
+
+    activateReducedMotion() {
+
     }
 
     animate() {
