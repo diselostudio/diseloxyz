@@ -14,9 +14,11 @@
 :root {
   --dark: #1b1b28;
   --dark-2: #111827;
+  --dark-4: #374151;
   --dark-5: #4b5563;
   --dark-7: #9ca3af;
   --dark-9: #e6e9ed;
+  --dark-11: #f9fafb;
   --light: #fdfdfd;
   --primary: #d5cfff;
   --primary-tint-1: #dad3ff;

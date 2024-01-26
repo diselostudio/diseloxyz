@@ -22,7 +22,7 @@ main {
 
 .heading {
   font-size: clamp(3.6rem, 2.9234rem + 1.7804vw, 6rem);
-  line-height: 100%;
+  line-height: 115%;
 }
 
 .sub-heading {

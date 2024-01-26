@@ -13,24 +13,6 @@
   .skills .skills-list .skills-list__tail {
     margin-bottom: 6rem;
   }
-
-  .footer .footer-content {
-    overflow: hidden;
-  }
-
-  .footer .footer-contact-list {
-    gap: 1rem;
-  }
-
-  .footer .footer-contact-list .footer-contact-list__bucket {
-    background-color: var(--primary-tint-1);
-    border: 1px solid var(--primary-shade-1);
-    border-radius: 3px;
-    padding: 1.5rem 2rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
 }
 
 @media screen and (min-width: 768px) {
@@ -48,10 +30,6 @@
   .intro {
     margin-bottom: 8em;
     height: 70svh;
-  }
-
-  .intro .availability-badge {
-    display: none;
   }
 
   .skills {
@@ -75,31 +53,28 @@
   .footer {
     position: relative;
     z-index: 100;
-    padding-top: 0;
+    padding-top: 10rem;
+    padding-bottom: 3rem;
+  }
+
+  .footer .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
   }
 
   .footer .footer-heading {
     margin-bottom: 0;
-  }
-
-  .footer .claim .claim__gradient {
-    display: none;
+    text-wrap: balance;
+    margin-bottom: 7rem;
   }
 
   .footer .footer-contact-list {
-    margin-bottom: 5rem;
-    overflow: auto;
-    padding-bottom: 1rem;
+    gap: 3rem;
+    padding-bottom: 3rem;
   }
 
-  .footer .footer-contact-list .footer-contact-list__bucket {
-    text-wrap: nowrap;
-    white-space: nowrap;
-  }
-
-  .footer .footer-contact-list .footer-contact-list__bucket * {
-    white-space: nowrap;
-  }
   /* location */
 
   .location {
@@ -185,25 +160,28 @@
   }
 }
 
-/* Availability badge interaction on scroll */
-
-@media screen and (min-width: 768px) {
-  body.scroll-50 .location .availability-badge,
-  .intro .availability-badge {
-    opacity: 1;
-    transition: opacity 0.2s linear;
-  }
-
-  body.scroll-50 .intro .availability-badge,
-  .location .availability-badge {
-    opacity: 0;
-    transition: opacity 0.1s linear;
-  }
-}
-
 /* Location and availability desktop style */
 
 @media screen and (min-width: 768px) {
+  .location {
+    height: 0;
+  }
+
+  .location .location__wrapper {
+    background: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    padding-top: 3rem;
+    backdrop-filter: none;
+    gap: 3rem;
+  }
+
+  .location .location__wrapper .location__availability {
+    flex-grow: 1;
+    margin-left: -1rem;
+  }
+
   .location .location__group {
     opacity: 1;
     position: relative;
@@ -212,8 +190,12 @@
     background: none;
     pointer-events: all;
     padding: 0;
-    gap: 2rem;
+    gap: 3rem;
     right: 0;
+  }
+
+  .location .location__tag {
+    gap: 1.2rem;
   }
 
   .location .location__tag.location__worldclock {
@@ -238,12 +220,34 @@
   }
 
   .location .accesibility__group {
-    top: 40%;
+    top: 66px;
     margin-right: 2.5rem;
     right: 0;
   }
 
   body.accesibility-open .location .accesibility__group {
-    transform: translateY(40%);
+    transform: translateY(20%);
+  }
+
+  .availability-badge {
+    gap: 0.5rem;
+  }
+}
+
+/* Intro desktop style */
+
+@media screen and (min-width: 768px) {
+  .intro {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: calc(var(--view) / 2.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  body.high-contrast-on .intro,
+  body.reduced-motion-on .intro {
+    padding-bottom: 17rem;
   }
 }

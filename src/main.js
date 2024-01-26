@@ -137,12 +137,6 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', throttle(function () {
     document.body.classList.remove('timezone-open');
     document.body.classList.remove('accesibility-open');
-
-    if (window.scrollY > 50) {
-      document.body.classList.add('scroll-50');
-    } else {
-      document.body.classList.remove('scroll-50');
-    }
   }, 25))
 
   // Timers
@@ -165,9 +159,3 @@ document.addEventListener('DOMContentLoaded', function () {
 
 })
 
-// Sketch
-// ------
-// Dynamically load sketch based on resolution
-// Listen to resize event (create one single event)
-// On resize check if new experience should be loaded
-// GSAP scroll based timeline
