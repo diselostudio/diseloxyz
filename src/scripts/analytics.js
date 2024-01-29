@@ -127,7 +127,7 @@ function sendEvent(params) {
         {
             method: 'POST',
             body: JSON.stringify(data),
-            headers: { Authorization: 'Bearer p.eyJ1IjogImI3YmE1ZDFmLTcwMTEtNGU3OC04ZDM4LWVkODA3MzJjM2YyYiIsICJpZCI6ICIxOGUxZGMxYi1jMzgzLTRmMDQtYjVkMC1iYTMyMmY0OWFhNzgiLCAiaG9zdCI6ICJldV9zaGFyZWQifQ.jsTo2qvgUpnzTPU2Sr5y4hC8OaYkA2PeNcA-wwjV0jk' }
+            headers: { Authorization: `Bearer ${process.env.TINYBIRD}` }
         }
     )
 }
