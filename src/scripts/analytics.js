@@ -127,7 +127,7 @@ function sendEvent(params) {
         {
             method: 'POST',
             body: JSON.stringify(data),
-            headers: { Authorization: `Bearer ${import.meta.env.TINYBIRD}` }
+            headers: { Authorization: `Bearer ${import.meta.env.VITE_TINYBIRD}` }
         }
     )
 }
