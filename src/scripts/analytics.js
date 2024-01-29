@@ -100,6 +100,8 @@ function formatDate(date) {
 
 function sendEvent(params) {
 
+    console.log(import.meta.env)
+
     if (import.meta.env.DEV) return;
 
     const schema = {

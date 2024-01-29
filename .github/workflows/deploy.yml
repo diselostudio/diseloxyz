@@ -34,7 +34,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          TINYBIRD: ${{ secrets.VITE_TINYBIRD }}
+          VITE_TINYBIRD: ${{ secrets.VITE_TINYBIRD }}
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
