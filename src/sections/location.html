@@ -5,14 +5,16 @@
             <include src="sections/available-now.html"></include>
         </div>
 
-        <button type="button" class="interaction__timezone location__tag location__worldclock" tabindex="1"
+        <button aria-label="Working timezone" type="button"
+            class="interaction__timezone location__tag location__worldclock" tabindex="0"
             data-tiny-click="interaction-timezone">
             <i class="size-m">
                 <include src="ui/worldclock.svg">
             </i>
         </button>
 
-        <button type="button" class="interaction__accesibility location__tag location__accesibility" tabindex="1"
+        <button type="button" aria-label="Accesibility options"
+            class="interaction__accesibility location__tag location__accesibility" tabindex="0"
             data-tiny-click="interaction-accesibility">
             <i class="size-m">
                 <include src="ui/accesibility.svg">
