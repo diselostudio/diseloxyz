@@ -7,6 +7,7 @@ export default {
         posthtml()
     ],
     build: {
-        outDir: '../dist'
+        outDir: '../dist',
+        sourcemap: true
     },
 }
